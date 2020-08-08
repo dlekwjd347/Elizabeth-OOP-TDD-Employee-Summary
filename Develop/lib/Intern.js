@@ -4,10 +4,8 @@ const Employee = require("./Employee");
 class Intern extends Employee {
 
     constructor(name, id, email, school) {
-
-        // must use the word "super" to call the constructor of your parent class, which is whatever you type after extend.  
+        //super calls the Employee objects for name, ID, and email to use them in this constructor
         super(name, id, email);
-
         this.school = school;
     }
 

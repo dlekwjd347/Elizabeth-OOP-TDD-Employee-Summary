@@ -33,3 +33,183 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+const teamMembers = []
+
+function createTeam() {
+
+    return inquirer
+        .prompt([
+
+            {
+                type: "list",
+                name: "memberChoice",
+                message: "Which type of team member are you?",
+                choices: [
+                    "Manager",
+                    "Engineer",
+                    "Intern",
+                    "No more members to add"
+                ]
+            }
+
+        ]).then(userChoice => {
+            // pass in the variable
+            switch (userChoice.memberChoice) {
+                // in case userChoice
+                case "Manager":
+                    return addManager();
+                    break;
+
+                case "Engineer":
+                    return addEngineer();
+                    break;
+
+                case "Intern":
+                    return addIntern();
+                    break;
+
+                case "No more employees":
+                    return;
+                    break
+
+            }
+        })
+
+
+    function addManager() {
+
+        return inquirer
+            .prompt([
+
+                {
+                    type: "input",
+                    message: "What is your first name?",
+                    name: "managerName"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your employee ID?",
+                    name: "managerID"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "managerEmail"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your office number?",
+                    name: "managerOfficeNum"
+                }
+
+            ]).then(userChoice => {
+                console.log(userChoice);
+
+                const manager = new Manager(userChoice.managerName, userChoice.managerID, userChoice.managerEmail, userChoice.managerOfficeNum)
+
+                teamMembers.push(manager)
+
+                return createTeam();
+
+            })
+
+
+    }
+
+
+    function addEngineer() {
+        return inquirer
+            .prompt([
+
+                {
+                    type: "input",
+                    message: "What is your first name?",
+                    name: "engineerName"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your employee ID?",
+                    name: "engineerID"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "engineerEmail"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your GitHub username?",
+                    name: "gitHubUsername"
+                }
+            ]).then(userChoice => {
+                console.log(userChoice);
+
+                const engineer = new Engineer(userChoice.engineerName, userChoice.engineerID, userChoice.engineerEmail, userChoice.gitHubUsername)
+
+                teamMembers.push(engineer)
+
+                return createTeam();
+
+            })
+    }
+
+
+
+
+    function addIntern() {
+
+      return inquirer
+            .prompt([
+
+                {
+                    type: "input",
+                    message: "What is your first name?",
+                    name: "internName"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your employee ID?",
+                    name: "internID"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "internEmail"
+                },
+
+                {
+                    type: "input",
+                    message: "What is your school?",
+                    name: "internSchool"
+                }
+            ]).then(userChoice => {
+                console.log(userChoice);
+
+                const intern = new Intern(userChoice.internName, userChoice.internID, userChoice.internEmail, userChoice.internSchool)
+
+                teamMembers.push(intern)
+
+                return createTeam();
+            })
+    }
+}
+
+createTeam()
+.then(() => {
+  let html = render(teamMembers);
+  fs.writeFile("team.html", html, 'utf8', () => {
+    console.log("Finished")
+  });
+   
+})
+module.exports = teamMembers
+
