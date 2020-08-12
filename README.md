@@ -21,7 +21,7 @@ so that I have quick access to emails and GitHub profiles
 
 * Below is what my application looks like.
 
-![Employee Summary 1](Assets\screenshots\DeployedHTML.JPG)
+![Employee Summary 1](https://github.com/dlekwjd347/Elizabeth-OOP-TDD-Employee-Summary/blob/master/Assets/screenshots/DeployedHTML.JPG)
 
 
 The dependencies are, [jest](https://jestjs.io/) for running the provided tests, and [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user.
@@ -54,6 +54,8 @@ The project will generate a `team.html` page in the `output` directory, that dis
 * The URL of the GitHub repository: https://github.com/dlekwjd347/Elizabeth-OOP-TDD-Employee-Summary
 
 * A video demonstrating the entirety of the app's functionality 
+
+https://drive.google.com/file/d/1z3RTL6vSaJSCSC7xfbOO5a0LVIaB6b7B/view
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
